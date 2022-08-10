@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, abort, redirect, url_for, request
 from jinja2 import TemplateNotFound
-from forms import CardInput
+from backend.forms import CardInput
 
 
 main_bp = Blueprint('main_bp', __name__)
