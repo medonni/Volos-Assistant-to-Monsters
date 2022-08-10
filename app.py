@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.secret_key = 'TheSuperSecretKeyThatNooneKnows'
 app.debug = True
 app.register_blueprint(main_bp)
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS']=False
 toolbar = DebugToolbarExtension(app)
 
 
