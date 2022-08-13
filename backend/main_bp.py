@@ -11,7 +11,10 @@ main_bp = Blueprint('main_bp', __name__)
 def home_page():
     form = CardInput()
     if request.method == 'POST':
-        return redirect(url_for('main_bp.survey', card_list=request.form['cards']))
+        user_input_filtered = [card[2:] for card in request.form['cards'].splitlines()]
+        print(type(user_input_filtered))
+        print(user_input_filtered)
+        return redirect(url_for('main_bp.survey', card_list=list(user_input_filtered)))
     try:
         return render_template('index.html', form=form)
     except TemplateNotFound:

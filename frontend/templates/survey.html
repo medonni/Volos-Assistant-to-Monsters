@@ -5,8 +5,10 @@
 {% block content %}
 <div class="container h-100">
     <div class="row align-items-center justify-content-center h-25">
-        <h1>{{ card_list }}</h1>
-
+        <h4>{{ card_list }}</h4>
+        {% for card in card_list %}
+                <h5>{{ card }}</h5>
+        {% endfor %}   
     </div>
 </div>
 {% endblock %}
