@@ -4,11 +4,40 @@
 
 {% block content %}
 <div class="container h-100">
-    <div class="row align-items-center justify-content-center h-25">
-        <h4>{{ card_list }}</h4>
-        {% for card in card_list %}
-                <h5>{{ card }}</h5>
-        {% endfor %}   
+    <div class="row">
+    <h1>Duplicate subtypes:</h1>
+    {% for key, value in duplicates.items() %}
+        <h3>{{ key }}</h3>
+        {% for creature in value %}
+        <div class="card col-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ creature['name'] }}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">{% for color in creature['colors'] %}{{ color }}{% endfor %}</h6>
+            <p class="card-text">{% for type in creature['types'] %} {{ type }} {% endfor %} {% for supertype in creature['supertypes'] %} {{ supertpe }} {% endfor %} -  {% for subtype in creature['subtypes'] %} {{ subtype }} {% endfor %}</p>
+          </div>
+        </div>
+        {% endfor %}
+    {% endfor %}
     </div>
+    <div class="row">
+    <h1>Single subtypes:</h1>
+    {% for key, value in singles.items() %}
+    <div class="col-3">
+        <h3>{{ key }}</h3>
+        {% for creature in value %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ creature['name'] }}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">{% for color in creature['colors'] %}{{ color }}{% endfor %}</h6>
+            <p class="card-text">{% for type in creature['types'] %} {{ type }} {% endfor %} {% for supertype in creature['supertypes'] %} {{ supertpe }} {% endfor %} -  {% for subtype in creature['subtypes'] %} {{ subtype }} {% endfor %}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    </div>
+  
 </div>
 {% endblock %}

@@ -16,26 +16,10 @@ def create_app():
     app.debug = True
 
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS']=False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'backend/data/cards.data')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     register_blueprints(app)
 
     toolbar.init_app(app)
-
-    db.init_app(app)
-    Migrate(app, db)
-
-    # @app.template_filter()
-    # def newline_slice(text):
-    #     """Slice form input by newline to create a list"""
-    #     return text.splitlines()
-
-    # @app.template_filter()
-    # def remove_card_amount(text):
-    #     return [card[2:] for card in text]
-
-
     return app
 
 

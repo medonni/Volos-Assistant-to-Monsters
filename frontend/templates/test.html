@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}TEST{% endblock %}
+
+{% block content %}
+<div class="container h-100">
+    <div class="row align-items-center justify-content-center h-25">
+        <h4>{{ var }}</h4>
+        {% for v in var %}
+                <h5>{{ v }}</h5>
+        {% endfor %}   
+    </div>
+</div>
+{% endblock %}
