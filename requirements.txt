@@ -3,3 +3,4 @@ flask
 flask_debugtoolbar
 flask_sqlalchemy
 flask_migrate
+Flask-APScheduler

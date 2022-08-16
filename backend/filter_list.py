@@ -21,8 +21,6 @@ def get_creatures(input_list):
                 duplicate_subtypes[key] = value
             else:
                 single_subtypes[key] = value
-        print(duplicate_subtypes)
-        print(single_subtypes)
     except Exception as e:
         return e
     return duplicate_subtypes, single_subtypes

@@ -21,11 +21,3 @@ def survey():
         return redirect('/')
     duplicate_subtypes, single_subtypes=get_creatures([card[2:] for card in request.form['cards'].splitlines()])
     return render_template('survey.html', duplicates=duplicate_subtypes, singles=single_subtypes)
-
-@main_bp.route('/test')
-def test():
-    var = ['asd', 'sdf', 'dfg', 'fgh']
-    print(type(var))
-    for v in var:
-        print(v)
-    return render_template('test.html', var = var)

@@ -1,11 +1,10 @@
+from time import timezone
 from flask import Flask
-from flask_debugtoolbar import DebugToolbarExtension
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from backend.data.generate_data import daily_data_download
 import os
+from flask_apscheduler import APScheduler
 
-toolbar = DebugToolbarExtension()
-db = SQLAlchemy()
+scheduler = APScheduler()
 
 
 def create_app():
@@ -14,12 +13,19 @@ def create_app():
     app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
     app.secret_key = 'TheSuperSecretKeyThatNooneKnows'
     app.debug = True
-
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS']=False
+
+    scheduler.init_app(app)
+    scheduler.start()
+
+    @scheduler.task('cron', id='daily_data_download_task', hour='9')
+    def cronjob():
+        daily_data_download()
+
 
     register_blueprints(app)
 
-    toolbar.init_app(app)
+
     return app
 
 
