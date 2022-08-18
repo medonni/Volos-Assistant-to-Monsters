@@ -3,30 +3,35 @@
 {% block title %}Volo's Assistaint{% endblock %}
 
 {% block content %}
-<div class="container h-100">
+<div class="container">
   <div class="row">
-    <table class="table">
+    <div class="section">
+      <h1 class="center-align c1">Volo's Assistaint<br>to monsters</h1>
+  </div>
+  <div class="section">
+    <table>
       <thead>
         <tr>
-          <th scope="col" rowspan="5">
-            <h1>Duplicate subtypes:</h1>
+          <th colspan="5">
+            <h4 class="c1"><b>Duplicate subtypes:</b></h4>
           </th>
         </tr>
       </thead>
       <tbody>
         {% for key, value in duplicates.items() %}
         <tr>
-          <td>{{ key }}</td>
+          <td class="c1"><b>{{ key }}</b></td>
         </tr>
           {% for creature in value %}
-          <tr>
+          <tr class="c3">
             <td>{{ loop.index }}</td>
             <td>{{ creature['name'] }}</td>
-            <td>{% for color in creature['colors'] %}{{ color }}{% endfor %}</td>
+            <td>{{ creature['manaCost'] }}
+            </td>
             <td>{% for type in creature['types'] %}{{ type }}{% endfor %} {% for supertype in creature['supertypes'] %}
               {{ supertpe }} {% endfor %}</td>
             <td>{% for subtype in creature['subtypes'] %}{{ subtype }} {% endfor %}</td>
-            <td> <a href="https://scryfall.com/search?q=oracleid:{{ creature['identifiers']['scryfallOracleId'] }}" >Link</a>
+            <td> <a href="https://scryfall.com/search?q=oracleid:{{ creature['identifiers']['scryfallOracleId'] }}" ><i class="material-icons c3">link</i></a>
             </td>
           </tr>
           {% endfor %}
@@ -34,26 +39,6 @@
       </tbody>
     </table>
   </div>
-  <div class="row">
-    <h1>Single subtypes:</h1>
-    {% for key, value in singles.items() %}
-    <div class="col-3">
-      <h3>{{ key }}</h3>
-      {% for creature in value %}
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ creature['name'] }}
-          </h5>
-          <h6 class="card-subtitle mb-2 text-muted">{% for color in creature['colors'] %}{{ color }}{% endfor %}</h6>
-          <p class="card-text">{% for type in creature['types'] %} {{ type }} {% endfor %} {% for supertype in
-            creature['supertypes'] %} {{ supertpe }} {% endfor %} - {% for subtype in creature['subtypes'] %} {{ subtype
-            }} {% endfor %}</p>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    {% endfor %}
-  </div>
-
+</div>
 </div>
 {% endblock %}

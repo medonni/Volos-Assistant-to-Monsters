@@ -23,7 +23,7 @@ def isLegal(card): return "commander" in card["legalities"]
 
 def extract_data(atomic_cards):
     cardsFetched = []
-    attributes_to_keep = ['name', 'supertypes', 'types', 'subtypes', 'colors', 'colorIdentity', 'manaCost', 'identifiers' ]
+    attributes_to_keep = ['name', 'supertypes', 'types', 'subtypes', 'manaCost', 'identifiers' ]
 
     with open(atomic_cards, 'r', encoding="utf8") as f:
         bulk_data = json.loads(f.read())

@@ -3,25 +3,22 @@
 {% block title %}Volo's Assistaint{% endblock %}
 
 {% block content %}
-<div class="container h-100">
-    <div class="row align-items-center justify-content-center h-25">
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <h1 class="text-center"><span>Volo's Assistaint</span><br><span>to monsters</span></h1>
+<div class="container">
+    <div class="row">
+        <div class="section">
+            <h1 class="center-align c1">Volo's Assistaint<br>to monsters</h1>
         </div>
-        <div class="row align-items-center justify-content-center h-75">
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <form method="POST" action="/survey">
-                    <div class="col-12">
-                        {{ form.cards.label(class="form-label") }} {{ form.cards(class="form-control form-control-lg",
-                        rows="10", placeholder="Paste the creature list here.") }}
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit form</button>
-                    </div>
-                </form>
-            </div>
+        <div class="section center-align">
+            <form method="POST" action="/survey">
+                <div class="decklist-textarea">
+                    {{ form.cards.label(class="c1") }} {{ form.cards(class="materialize-textarea z-depth-2 c1",
+                    placeholder="Paste the creature list here.") }}
+                </div>
+                <div>
+                    <button class="btn waves-effect waves-light z-depth-2" type="submit">Submit decklist</button>
+                </div>
+            </form>
         </div>
-
     </div>
 </div>
 {% endblock %}

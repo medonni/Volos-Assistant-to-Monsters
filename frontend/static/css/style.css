@@ -1,0 +1,16 @@
+html, body{
+    min-height: 100vh;
+    max-height: 100vh;
+}
+body{
+    background-color: rgb(40, 50, 56);
+}
+.c1 {
+    color: rgb(102, 125, 138);
+}
+.c2 {
+    color: rgb(54, 71, 78)
+}
+.c3 {
+    color: rgb(130, 140, 145)
+}
